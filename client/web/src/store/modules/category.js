@@ -8,6 +8,9 @@ const state = {
 const mutations = {
   // 设置分类列表
   SET_CATEGORY_LIST(state, list) {
+    if (!localStorage.getItem('hide')) {
+      list = list.filter(item => item.id !== -1)
+    }
     state.categoryList = list
   }
 }

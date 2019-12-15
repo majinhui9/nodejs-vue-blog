@@ -17,4 +17,5 @@ client/web/node_modules/
 client/admin/dist/
 client/admin/node_modules/
 server/node_modules/
-server/public/img/
+server/public/img/*
+server/public/md/*

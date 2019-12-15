@@ -21,6 +21,10 @@
               <Icon size="16" type="ios-eye-outline"/>
               {{item.browse}}
             </li>
+            <li class="articles-item-browse">
+              <Icon size="16" type="md-thumbs-up"/>
+              {{item.thumbs_up}}
+            </li>
           </ul>
         </div>
         <div class="articles-images">

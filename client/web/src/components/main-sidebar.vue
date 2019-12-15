@@ -42,7 +42,7 @@
               <div>
                 <Icon class="icon" type="ios-chatbubbles"></Icon>
                 微信
-                <img src="/static/images/weixin.jpg" alt="">
+                <img src="/static/img/weixin.jpg" alt="">
               </div>
             <span></span>
           </li>

@@ -41,11 +41,22 @@ Article.init({
     allowNull: false,
     comment: '文章封面'
   },
+  path: {
+    type: Sequelize.STRING(100),
+    allowNull: true,
+    comment: '文章路径'
+  },
   browse: {
     type: Sequelize.INTEGER,
     allowNull: true,
     defaultValue: 0,
     comment: '文章浏览次数'
+  },
+  thumbs_up: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+    defaultValue: 0,
+    comment: '文章点赞次数'
   },
   created_at: {
     type: Sequelize.DATE,

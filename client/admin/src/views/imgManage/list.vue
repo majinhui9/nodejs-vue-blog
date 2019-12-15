@@ -127,7 +127,7 @@
       },
       // 预览图片
       view(name) {
-        const content = ` <p style="margin-left: -40px;"><img src="${this.$bsaeSrc + name}" alt="" style="width:100%;"></p>`
+        const content = ` <p style="margin-left: -40px;"><img src="/api/img/${ name}" alt="" style="width:100%;"></p>`
          this.$Modal.info({
               title: '图片预览',
               content: content

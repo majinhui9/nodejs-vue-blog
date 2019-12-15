@@ -10,5 +10,9 @@ export default {
     const id = params.id
     delete params.id
     return fetch.get('/article/' + id, params)
+  },
+  // 文章点赞
+  thumbsUp(id) {
+    return fetch.get('/article/thumbsUp/' + id)
   }
 }

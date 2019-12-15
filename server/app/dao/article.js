@@ -1,7 +1,8 @@
 const {Op} = require('sequelize')
-
+const moment = require('moment');
 const {Article} = require('../models/article')
 const {Category} = require('../models/category')
+const {creatDir, writeMd, readMd} = require('../lib/utils')
 
 // 定义文章模型
 class ArticleDao {
@@ -22,15 +23,29 @@ class ArticleDao {
       throw new global.errs.Existing('文章已存在');
     }
 
+    let time = moment().format('YYYYMMDD')
+    let mdPath = './public/md/'+time +'/'+new Date().getTime()+ '.md'
+
+    if(!await creatDir(time)) {
+      throw new global.errs.Existing('文件创建失败');
+    }
+
+    const isWite = await writeMd(mdPath, v.get('body.content'))
+
+    if(!isWite) {
+      throw new global.errs.Existing('文件创建失败');
+    }
     // 创建文章
     const article = new Article();
 
     article.title = v.get('body.title');
     article.author = v.get('body.author');
     article.description = v.get('body.description');
-    article.content = v.get('body.content');
+    article.content = 'ok';
+    article.path = mdPath;
     article.cover = v.get('body.cover');
     article.browse = v.get('body.browse');
+    article.thumbs_up = v.get('body.thumbs_up');
     article.category_id = v.get('body.category_id');
 
     article.save();
@@ -43,7 +58,8 @@ class ArticleDao {
       keyword,
       page = 1,
       pageSize = 10,
-      desc = 'created_at'
+      desc = 'created_at',
+      hide = true
     } = params;
 
     // 筛选方式
@@ -54,6 +70,8 @@ class ArticleDao {
     // 筛选方式：存在分类ID
     if (category_id) {
       filter.category_id = category_id;
+    } else if (hide != 'false' ) {
+      filter.category_id = { [Op.gt]: 0 }
     }
 
     // 筛选方式：存在搜索关键字
@@ -119,12 +137,27 @@ class ArticleDao {
       throw new global.errs.NotFound('没有找到相关文章');
     }
 
+    let time = moment().format('YYYYMMDD')
+    let mdPath = article.path || './public/md/'+time +'/'+new Date().getTime()+ '.md'
+
+    if(!await creatDir(time)) {
+      throw new global.errs.Existing('文件更新失败');
+    }
+
+    const isWite = await writeMd(mdPath, v.get('body.content'))
+
+    if(!isWite) {
+      throw new global.errs.Existing('文件更新失败');
+    }
+
     // 更新文章
     article.title = v.get('body.title');
     article.author = v.get('body.author');
     article.description = v.get('body.description');
-    article.content = v.get('body.content');
+    article.content = 'ok';
+    article.path = mdPath;
     article.cover = v.get('body.cover');
+    article.thumbs_up = v.get('body.thumbs_up');
     article.browse = v.get('body.browse');
     article.category_id = v.get('body.category_id');
 
@@ -164,7 +197,22 @@ class ArticleDao {
       throw new global.errs.NotFound('没有找到相关文章');
     }
 
+    article.content = readMd(article.path) || article.content
+
     return article;
+  }
+
+  // 更新文章点赞
+  static async updateThumbsUp(id) {
+    // 查询文章
+    const article = await Article.findByPk(id);
+    if (!article) {
+      throw new global.errs.NotFound('没有找到相关文章');
+    }
+    // 更新 点赞
+    article.thumbs_up++;
+
+    article.save();
   }
 
 }

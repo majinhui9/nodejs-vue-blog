@@ -152,6 +152,13 @@ const routers = [
         meta: {module: "/doc", group: "doc", title: '文档 - 列表'},
         component: (resolve) => require(['../views/doc/list.vue'], resolve),
       },
+      //todo: 浏览日志
+      {
+        path: 'viewLog',
+        name: 'viewLog',
+        meta: {module: "/viewLog", group: "viewLog", title: '浏览日志 - 列表'},
+        component: (resolve) => require(['../views/viewLog/list.vue'], resolve),
+      },
       //todo: 回复评论管理
       {
         path: 'reply/:comment_id',

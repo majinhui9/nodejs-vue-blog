@@ -1,7 +1,5 @@
 const Router = require('koa-router');
 
-
-
 const {
   ArticleValidator,
   PositiveIdParamsValidator,
@@ -12,6 +10,7 @@ const {Auth} = require('../../../middlewares/auth');
 const {ArticleDao} = require('../../dao/article');
 const {CommentDao} = require('../../dao/comment');
 const {ColumnDao} = require('../../dao/column');
+const {ViewLogDao} = require('../../dao/viewLog');
 
 const {Resolve} = require('../../lib/helper');
 const res = new Resolve();
@@ -87,6 +86,21 @@ router.get('/article', async (ctx) => {
 });
 
 /**
+ * 点赞
+ */
+router.get('/article/thumbsUp/:id', async (ctx) => {
+  // 通过验证器校验参数是否通过
+  const v = await new PositiveIdParamsValidator().validate(ctx);
+  // 获取文章ID参数
+  const id = v.get('path.id');
+  await ArticleDao.updateThumbsUp(id);
+
+  // 返回结果
+  ctx.response.status = 200;
+  ctx.body = 'ok';
+});
+
+/**
  * 查询文章详情
  */
 router.get('/article/:id', async (ctx) => {
@@ -108,6 +122,8 @@ router.get('/article/:id', async (ctx) => {
   // 更新文章浏览
   await ArticleDao.updateBrowse(id, ++article.browse);
   await article.setDataValue('article_comment', commentList);
+  // 创建浏览日志
+  ViewLogDao.create({id, title: article.title}, ctx)
 
   // 返回结果
   ctx.response.status = 200;

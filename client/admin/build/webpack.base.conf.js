@@ -74,6 +74,7 @@ module.exports = {
     'axios': 'axios',
     'iview': 'iview',
     'vue-ls': 'VueLocalStorage',
+    'mavon-editor': 'MavonEditor',
   },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

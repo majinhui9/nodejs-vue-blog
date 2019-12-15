@@ -30,6 +30,7 @@
             <img :src="formValidate.cover" alt="cover">
           </div>
         </div>
+        <Input v-model="formValidate.cover" placeholder="图片地址"></Input>
       </FormItem>
       <FormItem>
         <Button @click="handleReset('formValidate')">重置</Button>

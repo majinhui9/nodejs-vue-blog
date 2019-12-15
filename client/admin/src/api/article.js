@@ -28,5 +28,14 @@ export default {
   // 创建文章
   create(params) {
     return fetch.post('/article', params);
+  },
+  
+  // 获取文章浏览日志
+  getLog(params) {
+    return fetch.get('/viewLog', params)
+  },
+  // 删除文章
+  destroyLog(id) {
+    return fetch.delete('/viewLog/' + id)
   }
 }

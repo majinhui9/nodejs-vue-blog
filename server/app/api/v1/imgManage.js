@@ -29,7 +29,7 @@ var storage = multer.diskStorage({
 	//修改图片名称  
 	filename: function (req, file, cb) {
 		var fileFormat = (file.originalname).split(".");
-		cb(null, Date.now() + "." + fileFormat[fileFormat.length - 1]);
+		cb(null, fileFormat[0] + '_' + Date.now()%10000000 + "." + fileFormat[fileFormat.length - 1]);
 	}
 })
 //加载配置  
@@ -40,7 +40,7 @@ router.post('/uploadImg', upload.single('file'), async (ctx, next) => {
 		filename: ctx.req.file.filename, //返回图片名
 		path: ctx.req.file.path
   }
-  await uploadFile(body.filename, body.path)
+  await uploadFile(body.filename, body.path) // 上传七牛云
 	const r = await ImgManageDao.create({body});
 	ctx.body = res.json(body)
 })

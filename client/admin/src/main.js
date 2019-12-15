@@ -10,7 +10,7 @@ import iView from 'iview';
 // import 'iview/dist/styles/iview.css';
 import './assets/style/admin.css';
 import mavonEditor from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
+// import 'mavon-editor/dist/css/index.css'
 
 Vue.use(VueRouter);
 Vue.use(iView);
@@ -66,7 +66,7 @@ router.afterEach(() => {
 });
 
 Vue.prototype.$isDev = process.env.NODE_ENV === 'development'
-Vue.prototype.$bsaeSrc = 'http://q271mzvj3.bkt.clouddn.com/' // 七牛云图片前缀
+Vue.prototype.$bsaeSrc = 'http://cdn.majh.top/' // 七牛云图片前缀
 
 sync(store, router)
 /* eslint-disable no-new */

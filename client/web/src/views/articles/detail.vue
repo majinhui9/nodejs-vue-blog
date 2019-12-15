@@ -1,6 +1,6 @@
 <template>
   <section class="article-detail" v-if="article">
-    <div class="article-container">
+    <div class="article-container" ref="container">
       <h1 class="article-title">
         {{article.title}}
       </h1>
@@ -33,7 +33,7 @@
       </div>
 
       <!-- 新建评论-->
-      <div class="comment-header">
+      <div class="comment-header" id="commentBox">
         <Icon type="ios-create-outline" />
         欢迎评论
       </div>
@@ -49,6 +49,9 @@
 
     <!-- 侧边栏 -->
     <v-main-sidebar/>
+
+    <!-- 左侧按钮 -->
+    <suspendedPanel :content='article' @thumbsUp="thumbsUp" :offsetLeft="offsetLeft" />
   </section>
 </template>
 
@@ -57,23 +60,31 @@
   import VCommentList from '../../components/comment-list'
   import VCommentCreate from '../../components/comment-create'
   import VMainSidebar from '../../components/main-sidebar'
-
+  import suspendedPanel from '../../components/suspended-panel'
+  import articles from '../../api/articles'
   export default {
     components: {
       VCommentList,
       VCommentCreate,
-      VMainSidebar
+      VMainSidebar,
+      suspendedPanel
     },
     name: 'detail',
     data() {
       return {
         article: null,
         id: this.$route.query.id,
-        targetType: 'article'
+        targetType: 'article',
+        offsetLeft: 200
       }
     },
     created() {
       this.getArticle()
+    },
+    mounted() {
+      setTimeout(() => {
+        this.offsetLeft = this.$refs.container.offsetLeft
+      }, 1000)
     },
     methods: {
       ...mapActions({
@@ -86,6 +97,10 @@
         this.article = r.data.data
         this.$store.commit('comment/SET_COMMENT_LIST', r.data.data.article_comment.data)
         this.$store.commit('comment/SET_COMMENT_PAGE', r.data.data.article_comment.meta)
+        document.title = this.article.title
+        this.$nextTick(() => {
+          this.offsetLeft = this.$refs.container.offsetLeft
+        })
       },
       /**
        * 更新评论
@@ -96,6 +111,13 @@
         } else if (type === 'reply') {
           this.getArticle()
         }
+      },
+      // 点赞
+      thumbsUp() {
+        articles.thumbsUp(this.article.id).then(res => {
+          this.$Message.success('点赞成功')
+          this.article.thumbs_up++
+        })
       }
     }
   }

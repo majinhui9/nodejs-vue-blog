@@ -7,8 +7,8 @@ import 'lib-flexible/flexible'
 // import 'view-design/dist/styles/iview.css'
 import VueLazyLoad from 'vue-lazyload'
 import mavonEditor from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
-import 'core-js'
+import Share from 'vue-social-share'
+// import 'mavon-editor/dist/css/index.css'
 
 // import ViewUI from 'view-design'
 // Vue.use(ViewUI)
@@ -17,11 +17,13 @@ import 'core-js'
 const vue = Vue;
 
 Vue.use(VueLazyLoad, {
-  error: require('./assets/images/logo.png'),
-  loading: require('./assets/images/logo.png')
+  error: require('./assets/images/logo.svg'),
+  loading: require('./assets/images/logo.svg')
 })
 
 Vue.use(mavonEditor)
+
+Vue.use(Share)
 
 // Vue.prototype.$Message = Message
 Vue.config.productionTip = false
@@ -35,6 +37,7 @@ Vue.use(Storage, {
 router.beforeEach(async (to, from, next) => {
   store.commit('headers/SET_NAV_INDEX', to.meta.navIndex)
   next()
+  document.title = 'Cloudy - blog.majh.top'
 })
 
 new Vue({

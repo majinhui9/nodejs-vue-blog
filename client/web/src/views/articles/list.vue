@@ -3,7 +3,7 @@
 
     <article class="article-list">
       <ul class="category" v-if="category && category.length > 0">
-        <li class="category-item" @click="getAllArticle">
+        <li :class="{'category-item':true, 'category-item-active': categoryIndex === -1}"  @click="getAllArticle">
           全部
         </li>
         <li v-for="(item, index) in category"

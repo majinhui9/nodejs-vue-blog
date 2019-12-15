@@ -7,7 +7,7 @@
         <template slot-scope="{ row }" slot="name">
           <strong>{{ row.name }}</strong>
         </template>
-        <template slot-scope="{ row, index }" slot="action">
+        <template slot-scope="{ row }" slot="action">
           <Button type="primary" size="small" style="margin-right: 5px" @click="update(row.id)">编辑</Button>
           <Button type="error" size="small" @click="destroy(row.id)">删除</Button>
         </template>
@@ -104,7 +104,8 @@
       async fetchData() {
         // let {page, desc, category_id, keyword} = this.$route.query;
         const res = await this.getArticleList({
-          page: this.currentPage
+          page: this.currentPage,
+          hide: false
         });
 
         this.list = res.data.data.data;

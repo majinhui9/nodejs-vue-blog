@@ -7,7 +7,7 @@
     </article>
     <article class="text">
       <p>
-        我叫马锦慧，职业是一名前端工程师，这个博客属于我的个人博客网站，同时也在 <a href="https://gitee.com/xlys998/nodejs-vue-blog" target="_blank">
+        我是一名前端工程师，这个博客属于我的个人博客网站，同时也在 <a href="https://gitee.com/xlys998/nodejs-vue-blog" target="_blank">
         Github </a>开源了此项目代码，
       </p>
       <p class="content">博客的内容：积极向上的文章。</p>

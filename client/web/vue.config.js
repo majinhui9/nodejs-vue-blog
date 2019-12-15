@@ -9,6 +9,7 @@ module.exports = {
   publicPath: process.env.PUBLIC_PATH,
   assetsDir: 'static',
   devServer: {
+    open: true,
     proxy: {
       '/api': {
         target: `http://localhost:3000`,
@@ -32,10 +33,12 @@ module.exports = {
       'axios': 'axios',
       'vue-ls': 'VueStorage',
       'vue-lazyload': 'VueLazyload',
+      'mavon-editor': 'MavonEditor',
       'view-design': 'iview',
-      'core-js': 'core',
-      'qs': 'Qs',
-      'lodash': '_'
+      'vue-social-share': 'Share',
+      // '_core-js': 'core',
+      // '_lodash': '_'
+      'qs': 'Qs'
     }
   },
   css: {

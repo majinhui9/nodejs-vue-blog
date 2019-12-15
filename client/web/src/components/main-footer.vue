@@ -9,7 +9,7 @@
 
 <style lang="less" scoped>
   .footer-inner {
-    padding: 64px 32px;
+    padding: 32px;
     line-height: 36px;
     text-align: center;
     font-size: 18px;

@@ -73,6 +73,15 @@ const menus = [
         { name: "图片列表", path: "/imgManage", icon: "md-list" }
       ]
     },
+    // 日志
+    {
+      name: "浏览日志",
+      path: "viewLog",
+      icon: "ios-book",
+      children: [
+        { name: "日志列表", path: "/viewLog", icon: "md-list" }
+      ]
+    },
     // 文档
     {
       name: "文档",
