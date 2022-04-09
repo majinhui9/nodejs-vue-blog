@@ -33,7 +33,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "lodash": "^4.17.11",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mysql2": "^1.6.5",
     "npm-check": "^5.9.0",
     "qiniu": "^7.2.2",
