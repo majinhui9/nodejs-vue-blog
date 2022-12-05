@@ -3303,9 +3303,9 @@ decamelize@^1.2.0:
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
 
 decode-uri-component@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.npm.taobao.org/decode-uri-component/download/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
-  integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
+  integrity sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==
 
 deep-equal@^1.0.1:
   version "1.1.0"
@@ -8940,6 +8940,11 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
+social-share.js@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/social-share.js/-/social-share.js-1.0.16.tgz#1fd4a91c46c8c6835670f11472ecb2e293215310"
+  integrity sha512-NSV6fYFft/U0fEbjXdumZGU3c2oTbnJ6Ha5eNMEEBGsJpD+nu+nbg3LiRygO5GnoNgUa/dOmJyVHb/kM4dJa6g==
+
 sockjs-client@1.4.0:
   version "1.4.0"
   resolved "https://registry.npm.taobao.org/sockjs-client/download/sockjs-client-1.4.0.tgz#c9f2568e19c8fd8173b4997ea3420e0bb306c7d5"
@@ -9962,6 +9967,11 @@ vue-eslint-parser@^5.0.0:
     esquery "^1.0.1"
     lodash "^4.17.11"
 
+vue-github-badge@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vue-github-badge/-/vue-github-badge-1.0.1.tgz#dff7ce07320e64a218edf106b15a43176ec06106"
+  integrity sha512-8X+FUWapnnDfs6cRUg3mCfHUf2r5arUfCSRdvbIn860oj9us3Rz3VOtioUgmfzh6EhaaYTs0Oh78EzJ+Z6uqAA==
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
@@ -10008,6 +10018,14 @@ vue-router@^3.1.3:
   version "3.1.3"
   resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.1.3.tgz#e6b14fabc0c0ee9fda0e2cbbda74b350e28e412b"
   integrity sha1-5rFPq8DA7p/aDiy72nSzUOKOQSs=
+
+vue-social-share@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/vue-social-share/-/vue-social-share-0.0.3.tgz#901dd165d4750214976dec053101abb51abb3868"
+  integrity sha512-zzZGloWVTE/OrEFT0oVfVxzWBvak9KLWiIRWWkPWag10PlGgxTI4o1oN+kXIT+8U3MkRVA8cQLPf5CPqDGmfqw==
+  dependencies:
+    social-share.js "^1.0.16"
+    vue-github-badge "^1.0.0"
 
 vue-style-loader@^4.1.0:
   version "4.1.2"
